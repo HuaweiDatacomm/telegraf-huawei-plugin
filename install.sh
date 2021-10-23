@@ -2,10 +2,7 @@
 echo "please enter telegraf path: (please use '/' replace '\'):" 
 read telegraf_dir
 huaweiplugin_dir=$(pwd)
-echo $telegraf_dir 
-echo $huaweiplugin_dir
-cp -r $huaweiplugin_dir/huawei-plugin $telegraf_dir
-
+cp -r $huaweiplugin_dir $telegraf_dir
 cp -r $telegraf_dir/telegraf-huawei-plugin/huawei_telemetry_dialin $telegraf_dir/telegraf/plugins/inputs
 cp -r $telegraf_dir/telegraf-huawei-plugin/huawei_telemetry_dialout $telegraf_dir/telegraf/plugins/inputs
 cp -r $telegraf_dir/telegraf-huawei-plugin/huawei_grpc_json $telegraf_dir/telegraf/plugins/parsers
@@ -52,4 +49,3 @@ func NewHuaweiGrpcJsonParser() (Parser, error) {
 EOF
 
 echo "install huawei-plugin successfully"
-
