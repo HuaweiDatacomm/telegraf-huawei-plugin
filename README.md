@@ -30,7 +30,12 @@ Telegraf requires Go version 1.17 or newer, the Makefile requires GNU make.
 3. Run install.sh(this file can prompt for users for the telegraf,users must enter the right path of telegraf)
    ```
    ./install.sh
-4. Run `make` from the source directory
+   ```
+4. get the file of proto ,then use protoc-gen-go generate the file of proto,put in the appropriate folder,release the corresponding comment code
+   ```
+   --go_out=plugins=grpc:. xxx.proto
+   ```
+5. Run `make` from the source directory
    ```
    cd telegraf
    make
