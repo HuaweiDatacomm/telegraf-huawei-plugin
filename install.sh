@@ -6,11 +6,11 @@ echo $telegraf_dir
 echo $huaweiplugin_dir
 cp -r $huaweiplugin_dir/huawei-plugin $telegraf_dir
 
-cp -r $telegraf_dir/huawei-plugin/huawei_telemetry_dialin $telegraf_dir/telegraf/plugins/inputs
-cp -r $telegraf_dir/huawei-plugin/huawei_telemetry_dialout $telegraf_dir/telegraf/plugins/inputs
-cp -r $telegraf_dir/huawei-plugin/huawei_grpc_json $telegraf_dir/telegraf/plugins/parsers
-cp -r $telegraf_dir/huawei-plugin/huawei_grpc_gpb $telegraf_dir/telegraf/plugins/parsers
-cp -r $telegraf_dir/huawei-plugin/metric_match $telegraf_dir/telegraf/plugins/processors
+cp -r $telegraf_dir/telegraf-huawei-plugin/huawei_telemetry_dialin $telegraf_dir/telegraf/plugins/inputs
+cp -r $telegraf_dir/telegraf-huawei-plugin/huawei_telemetry_dialout $telegraf_dir/telegraf/plugins/inputs
+cp -r $telegraf_dir/telegraf-huawei-plugin/huawei_grpc_json $telegraf_dir/telegraf/plugins/parsers
+cp -r $telegraf_dir/telegraf-huawei-plugin/huawei_grpc_gpb $telegraf_dir/telegraf/plugins/parsers
+cp -r $telegraf_dir/telegraf-huawei-plugin/metric_match $telegraf_dir/telegraf/plugins/processors
 str1='_ "github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialin"'
 str2='_ "github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialout"'
 str3='"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_json"'
