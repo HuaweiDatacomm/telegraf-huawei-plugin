@@ -2,12 +2,8 @@ package telemetry
 
 import (
 	"fmt"
-	"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug"
-	//"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_ifm"
-	//"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_devm"
-	//"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_cpudefend"
-	//"google.golang.org/protobuf/proto"
-
+	"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_ifm"
+	"google.golang.org/protobuf/proto"
 	"reflect"
 )
 
@@ -94,8 +90,5 @@ func (p *ProtoTypes) GetTypesByProtoOrg(orgType ProtoOrganizeType) reflect.Type 
 
 // one map key: protoPath + version, value : reflect[]
 var pathTypeMap = map[PathKey][]reflect.Type{
-	//PathKey{ProtoPath: "huawei_ifm.Ifm", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_ifm.Ifm)(nil))},
-	PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
-	// PathKey{ProtoPath: "huawei_devm.Devm", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_devm.Devm)(nil))},
-	// PathKey{ProtoPath: "huawei_cpudefend.Cpudefend", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_cpudefend.Cpudefend)(nil))},
+	PathKey{ProtoPath: "huawei_ifm.Ifm", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_ifm.Ifm)(nil))},
 }
