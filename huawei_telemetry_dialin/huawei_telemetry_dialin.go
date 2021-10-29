@@ -116,7 +116,7 @@ func (dialin *HuaweiTelemetryDialin) singleSubscribe(dialinConfig router, parser
 	tlsConfig, errTls := dialinConfig.ClientConfig.TLSConfig()
 	if errTls != nil {
 		dialin.Log.Errorf("E! [single Subscribe] tlsConfig %s", errTls)
-		dialin.stop()
+		//dialin.stop()
 	} else if tlsConfig != nil {
 		// tls
 		tlsConfig.ServerName = dialinConfig.ServerName
