@@ -16,6 +16,7 @@ import (
 const sampleConfig = ``
 const sensorPathKey = "sensor_path"
 const TelemetryKey = "telemetry"
+const pointConfig = "."
 
 type MetricMatch struct {
 	Tag         map[string][]string `toml:"tag"`
@@ -59,7 +60,7 @@ func (m *MetricMatch) Apply(in ...telegraf.Metric) []telegraf.Metric {
 				allKeys := make([]string, 0)
 				needKeys := make([]string, 0)
 				for _, v := range eachMetric.FieldList() {
-					if !strings.Contains(v.Key, "content") {
+					if !strings.Contains(v.Key, pointConfig) {
 						needKeys = append(needKeys, v.Key)
 					}
 					allKeys = append(allKeys, v.Key)
