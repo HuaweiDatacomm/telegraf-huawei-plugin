@@ -50,5 +50,3 @@ sed -i "5i ${str4}" $telegraf_dir/plugins/parsers/registry.go
 sed -i "5i ${str5}" $telegraf_dir/plugins/parsers/registry.go
 sed -i "5i ${str6}" $telegraf_dir/plugins/parsers/registry.go
 sed -i "5i ${str7}" $telegraf_dir/plugins/processors/all/all.go
-
-echo install telegraf-huawei-plugin successfully
