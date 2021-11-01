@@ -9,12 +9,8 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - OS : Ubuntu, CentOS, Suse, Windows, Red Hat
 - Go : go1.17.2
 - Telegraf : Telegraf (1.20 recommended)
-- Glibc : https://www.gnu.org/software/libc/libc.html
 - Make : https://www.gnu.org/software/make/
 - Protoc-gen-go :https://github.com/golang/protobuf
-
-
-
 
 ### Build From Source
 
@@ -53,7 +49,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    
    This step needs to be improved. 
    ```
-5. Run `make` from the source directory,you can see telegraf-huawei-plugin
+5. Run `make` from the source directory,you can see telegraf-huawei-plugin:huawei_telemetry_dialin and huawei_telemetry_dialout
    ```
    cd telegraf
    make
