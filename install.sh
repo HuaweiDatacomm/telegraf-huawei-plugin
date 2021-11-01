@@ -38,11 +38,15 @@ func NewHuaweiGrpcJsonParser() (Parser, error) {
 EOF
 str1='_"github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialin"'
 str2='_"github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialout"'
-str3='  "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_json"'
-str4='  "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb"'
-str5='_"github.com/influxdata/telegraf/plugins/processors/metric_match"'
+str3='"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_json"'
+str4='"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb"'
+str5='"github.com/influxdata/telegarf/models"'
+str6='"github.com/influxdata/telegraf/selfstat"'
+str7='_"github.com/influxdata/telegraf/plugins/processors/metric_match"'
 sed -i "5i ${str1}" $telegraf_dir/plugins/inputs/all/all.go
 sed -i "5i ${str2}" $telegraf_dir/plugins/inputs/all/all.go
 sed -i "5i ${str3}" $telegraf_dir/plugins/parsers/registry.go
 sed -i "5i ${str4}" $telegraf_dir/plugins/parsers/registry.go
-sed -i "5i ${str5}" $telegraf_dir/plugins/processors/all/all.go
+sed -i "5i ${str5}" $telegraf_dir/plugins/parsers/registry.go
+sed -i "5i ${str6}" $telegraf_dir/plugins/parsers/registry.go
+sed -i "5i ${str7}" $telegraf_dir/plugins/processors/all/all.go
