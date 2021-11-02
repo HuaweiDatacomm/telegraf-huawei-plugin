@@ -9,8 +9,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - OS : Ubuntu, CentOS, Suse, Windows, Red Hat
 - Go : go1.17.2
 - Telegraf : Telegraf (1.20 recommended)
-- Make : https://www.gnu.org/software/make/
-- Protoc-gen-go :https://github.com/golang/protobuf
+- Protoc-gen-go :
 
 ### Build From Source
 
@@ -30,9 +29,10 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    ```
 3. Run install.sh
    ```
+   chmod +x install.sh
    ./install.sh
    ```
-4. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto
+4. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    mkdir huawei_debug (put huawei_debug.proto in this dir (this dir's name must be same of proto ))
@@ -47,7 +47,6 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    }
    )
    
-   This step needs to be improved. 
    ```
 5. Run `make` from the source directory,you can see telegraf-huawei-plugin:huawei_telemetry_dialin and huawei_telemetry_dialout
    ```
@@ -59,45 +58,89 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
   
  - The TIG(telegraf,influxdb,grafana) is an open-source O&M tool that collects Telemetry data sent by devices, analyzes the data, and displays the data graphically.
    The other two tools can be downloaded from the official website
- - 1.configuration telegraf.conf (telegraf/ect/telegraf.conf)
+ - influxdb:https://dl.influxdata.com/influxdb/releases/influxdb-1.8.7_linux_amd64.tar.gz
+ - grafana:https://dl.grafana.com/oss/release/grafana-7.3.6.linux-amd64.tar.gz
+ - 1.config huawei devices
    ```
-   [[outsputs.influxdb]]
-   urls = ["http://127.0.0.1:8086"]
-   database = ""
+   https://support.huawei.com/enterprise/en/doc/EDOC1100055030/b650f7a7
+   ```
+ - 2.copy telegraf.conf to /etc/telegraf
+   ```
+   cd /etc
+   mkdir telegraf
+   cp (the dir of telegraf)/etc/telegraf.conf /etc/telegraf
+   ```
+ - 3.configuration telegraf.conf (telegraf/ect/telegraf.conf)
+   ```
+   # ##################################output plugin influxdb##################################
+   #[[outsputs.influxdb]]
+   #urls = ["http://127.0.0.1:8086"]
+   #database = "DTS"
+   # username = ""
+   # password = ""
    
-   [[inputs.huawei_telemetry_dialout]]
-   service_address ="ip:port"
-   data_format = "grpc"
-   transport = "grpc"
+   # ###################################input plugin telegraf-huawei###########################
+   # ##telegraf-huawei is divided into two: huawei_telemetry_dialout and huawei_telemetry_dialin
+   # ##huawei_telemetry_dialout
+   # ##service_address = “ip:port”	 #IP address and port number enabled for static subscription
+   # ##data_format = "grpc"  #reserved field. The value is fixed at grpc.
+   # ##transport = "grpc"   #reserved field. The value is fixed at grpc.
+  
+   #[[inputs.huawei_telemetry_dialout]]
+   #service_address ="ip:port"
+   #data_format = "grpc"
+   #transport = "grpc"
 
-   [[inputs.huawei_telemetry_dialin]]
-   data_format = "grpc" 
-   [[inputs.huawei_telemetry_dialin.routers]]
-   address = "ip:port"
-   sample_interval = 
-   encoding="json"  # or "gpb" 
-   request_id = 
-     [inputs.huawei_telemetry_dialin.routers.aaa]
-        username = ""
-        password = ""
-     [[inputs.huawei_telemetry_dialin.routers.Paths]]
-        depth = 1
-        path = ""
+   # ##huawei_telegraf_dialin
+   # ##data_format  #reserved field. The value is fixed at grpc.
+   # ##address  #collection IPaddress and port
+   # ##sample_interval  #sampling interval
+   # ##encoding  #coding rules "json" or "gpb"
+   # ##request_ip  #subscription parameters, vaule is 1~2^64-1
+   # ##suppress_redundant #option of suppress_redundant: true or false
+   # ##username # aaa's username
+   # ##password # aaa's password(encrypted)
+   # ##path #collection path
+   # ##metric_match.approach #filtering metrics methods ,"include" or "exclude"
+   # ##metric_match.field_filter #filtering metrics matching 
+   # ##metric_match.tag # field to tag
+   
+   #[[inputs.huawei_telemetry_dialin]]
+   #data_format = "grpc" 
+   #[[inputs.huawei_telemetry_dialin.routers]]
+   #address = "ip:port"
+   #sample_interval = 1000
+   #encoding="json"  # or "gpb" 
+   #suppress_redundant = true
+   #request_id = 
+   #  [inputs.huawei_telemetry_dialin.routers.aaa]
+   #     username = ""
+   #     password = ""
+   #  [[inputs.huawei_telemetry_dialin.routers.Paths]]
+   #     depth = 1
+   #     path = ""
 
-   [processors.metric_match.approach]
-   appproach = "include" # or exclude
-   [processors.metric_match.tag]
-   "telemetry" = [""]
-   [processors.metric_match.field_filter]
-   ""=[""]
+   #[processors.metric_match.approach]
+   #appproach = "include" # or exclude
+   #[processors.metric_match.tag]
+   #"telemetry" = [""]
+   #[processors.metric_match.field_filter]
+   #"path"=[""]
    ```
- - 2.start influxdb
+ - 4.start influxdb
    ```
    cd influxdb/usr/bin
    ./influxd
+   ./influx
+   create database DTS 
    ```
- - 3.start telegraf
- - 4.use grafana tool
+ - 5.start telegraf
+   ```
+   cd (the dir of telegraf)/cmd/telegraf
+   go run ./
+   ```
+ - 6.use Grafana
+   
 
   
 
