@@ -106,7 +106,7 @@ func createSubArgs(router router) *huawei_dialin.SubsArgs {
 		Encoding:          uint32(encoding),
 		Path:              paths,
 		SampleInterval:    uint64(router.Sample_interval),
-		HeartbeatInterval: 120,
+		HeartbeatInterval: 60,
 		Suppress:          &huawei_dialin.SubsArgs_SuppressRedundant{SuppressRedundant: router.Suppress_redundant},
 	}
 }

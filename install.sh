@@ -40,7 +40,7 @@ str1='_"github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialin"'
 str2='_"github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialout"'
 str3='"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_json"'
 str4='"github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb"'
-str5='"github.com/influxdata/telegarf/models"'
+str5='"github.com/influxdata/telegraf/models"'
 str6='"github.com/influxdata/telegraf/selfstat"'
 str7='_"github.com/influxdata/telegraf/plugins/processors/metric_match"'
 sed -i "5i ${str1}" $telegraf_dir/plugins/inputs/all/all.go
