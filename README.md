@@ -9,7 +9,10 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - OS : Ubuntu, CentOS, Suse, Windows, Red Hat
 - Go : go1.17.2
 - Telegraf : Telegraf (1.20 recommended)
-- Protoc-gen-go :
+- protoc :  3.11.4
+  https://github.com/protocolbuffers/protobuf/releases
+- protoc-gen-go :
+  go get -u github.com/protobuf/protoc-gen-go@v1.2.0
 
 ### Build From Source
 
@@ -140,6 +143,16 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    go run ./
    ```
  - 6.use Grafana
+   ```
+   1.Login
+   2.Configuration
+   3.Add data source
+   4.Choose influxdb
+   5.Fill in influxdb's configuraton,such as url,database,username,password
+   6.Save & Test
+   7.Create Dashboard 
+   8.Add new panel
+   ```
    
 
   
