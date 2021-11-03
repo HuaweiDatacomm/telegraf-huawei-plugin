@@ -11,7 +11,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - Telegraf : Telegraf (1.20 recommended)
 - protoc :  3.11.4
   https://github.com/protocolbuffers/protobuf/releases
-- protoc-gen-go :  1.2.0
+- protoc-gen-go :
   go get -u github.com/protobuf/protoc-gen-go@v1.2.0
 
 ### Build From Source
