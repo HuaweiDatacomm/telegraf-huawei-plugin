@@ -38,8 +38,8 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
 4. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
-   mkdir huawei_debug (put huawei_debug.proto in this dir (this dir's name must be same of proto ))
-   protoc --go_out=plugins=grpc:. huawei_debug.proto
+   mkdir huawei-debug (put huawei-debug.proto in this dir (this dir's name must be same of proto ))
+   protoc --go_out=plugins=grpc:. huawei-debug.proto
    vim HuaweiTelemetry.go (
    add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import
    add  PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
