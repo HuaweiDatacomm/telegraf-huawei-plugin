@@ -140,17 +140,16 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    cd (the dir of telegraf)/cmd/telegraf
    go run ./
    ```
- - 6.use Grafana
-   ```
-   1.Login
-   2.Configuration
-   3.Add data source
-   4.Choose influxdb
-   5.Fill in influxdb's configuraton,such as url,database,username,password
-   6.Save & Test
-   7.Create Dashboard 
-   8.Add new panel
-   ```
+ - 6.use Grafana  
+   1.Login  
+   2.Configuration  
+   3.Add data source  
+   4.Choose influxdb  
+   5.Fill in influxdb's configuraton,such as url,database,username,password  
+   6.Save & Test  
+   7.Create Dashboard  
+   8.Add new panel  
+ 
    
 
   
