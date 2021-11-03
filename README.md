@@ -38,7 +38,8 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
 4. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
-   mkdir huawei-debug (put huawei-debug.proto in this dir (this dir's name must be same of proto ))
+   mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
+   cd huawei-debug
    protoc --go_out=plugins=grpc:. huawei-debug.proto
    vim HuaweiTelemetry.go (
    add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import
@@ -51,7 +52,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    )
    
    ```
-5. Run `make` from the source directory,you can see telegraf-huawei-plugin:huawei_telemetry_dialin and huawei_telemetry_dialout
+5. Run `make` from the source directory,you can see telegraf-plugins are installed
    ```
    cd telegraf
    make
@@ -70,6 +71,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    cd /etc
    mkdir telegraf
    cp (the dir of telegraf)/etc/telegraf.conf /etc/telegraf
+   vim /etc/telegraf/telegraf.conf
    ```
  - 3.configuration telegraf.conf (telegraf/ect/telegraf.conf)
    ```
