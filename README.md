@@ -39,7 +39,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
-   cd huawei-debug
+   cd huawei_debug
    protoc --go_out=plugins=grpc:. huawei-debug.proto
    vim HuaweiTelemetry.go (
    add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import
