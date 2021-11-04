@@ -38,8 +38,9 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
 4. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
-   mkdir huawei_debug (put huawei_debug.proto in this dir (this dir's name must be same of proto ))
-   protoc --go_out=plugins=grpc:. huawei_debug.proto
+   mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
+   cd huawei_debug
+   protoc --go_out=plugins=grpc:. huawei-debug.proto
    vim HuaweiTelemetry.go (
    add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import
    add  PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
@@ -51,7 +52,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    )
    
    ```
-5. Run `make` from the source directory,you can see telegraf-huawei-plugin:huawei_telemetry_dialin and huawei_telemetry_dialout
+5. Run `make` from the source directory,you can see telegraf-plugins are installed
    ```
    cd telegraf
    make
@@ -59,21 +60,20 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    ```
 ## Getting Used
   
- - The TIG(telegraf,influxdb,grafana) is an open-source O&M tool that collects Telemetry data sent by devices, analyzes the data, and displays the data graphically.
+ - The TIG(Telegraf,Influxdb,Grafana) is an open-source O&M tool that collects Telemetry data sent by devices, analyzes the data, and displays the data graphically.
    The other two tools can be downloaded from the official website
- - influxdb:https://dl.influxdata.com/influxdb/releases/influxdb-1.8.7_linux_amd64.tar.gz
- - grafana:https://dl.grafana.com/oss/release/grafana-7.3.6.linux-amd64.tar.gz
- - 1.config huawei devices
-   ```
-   https://support.huawei.com/enterprise/en/doc/EDOC1100055030/b650f7a7
-   ```
+ - Influxdb:https://dl.influxdata.com/influxdb/releases/influxdb-1.8.7_linux_amd64.tar.gz
+ - Grafana:https://dl.grafana.com/oss/release/grafana-7.3.6.linux-amd64.tar.gz
+ - 1.config huawei devices  
+   https://support.huawei.com/enterprise/en/doc/EDOC1100055030/b650f7a7  
  - 2.copy telegraf.conf to /etc/telegraf
    ```
    cd /etc
    mkdir telegraf
    cp (the dir of telegraf)/etc/telegraf.conf /etc/telegraf
+   vim /etc/telegraf/telegraf.conf
    ```
- - 3.configuration telegraf.conf (telegraf/ect/telegraf.conf)
+ - 3.configuration telegraf.conf (/ect/telegraf/telegraf.conf)
    ```
    # ##################################output plugin influxdb##################################
    #[[outsputs.influxdb]]
@@ -142,17 +142,16 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    cd (the dir of telegraf)/cmd/telegraf
    go run ./
    ```
- - 6.use Grafana
-   ```
-   1.Login
-   2.Configuration
-   3.Add data source
-   4.Choose influxdb
-   5.Fill in influxdb's configuraton,such as url,database,username,password
-   6.Save & Test
-   7.Create Dashboard 
-   8.Add new panel
-   ```
+ - 6.use Grafana  
+   1.Login  
+   2.Configuration  
+   3.Add data source  
+   4.Choose influxdb  
+   5.Fill in influxdb's configuraton,such as url,database,username,password  
+   6.Save & Test  
+   7.Create Dashboard  
+   8.Add new panel  
+ 
    
 
   
