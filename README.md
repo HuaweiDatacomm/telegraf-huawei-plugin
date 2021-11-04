@@ -73,7 +73,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    cp (the dir of telegraf)/etc/telegraf.conf /etc/telegraf
    vim /etc/telegraf/telegraf.conf
    ```
- - 3.configuration telegraf.conf (telegraf/ect/telegraf.conf)
+ - 3.configuration telegraf.conf (/ect/telegraf/telegraf.conf)
    ```
    # ##################################output plugin influxdb##################################
    #[[outsputs.influxdb]]
