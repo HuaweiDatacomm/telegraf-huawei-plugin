@@ -30,8 +30,9 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    export TELEGRAFROOT = the dir of telegraf
    source /etc/profile
    ```
-3. Run install.sh
+3. Run install.sh (warning: run install.sh only once)
    ```
+   cd telegraf-huawei-plugin
    chmod +x install.sh
    ./install.sh
    ```
@@ -54,9 +55,8 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    ```
 5. Run `make` from the source directory,you can see telegraf-plugins are installed
    ```
-   cd telegraf
+   cd ../telegraf
    make
-   telegraf --input-list
    ```
 ## Getting Used
   
@@ -73,7 +73,12 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    cp (the dir of telegraf)/etc/telegraf.conf /etc/telegraf
    vim /etc/telegraf/telegraf.conf
    ```
- - 3.configuration telegraf.conf (/ect/telegraf/telegraf.conf)
+ - 3.get the encrypted password
+   ```
+   cd telegraf-huawei-plugin
+   go run encrypted.go
+   ```
+ - 4.configuration telegraf.conf (/ect/telegraf/telegraf.conf)
    ```
    # ##################################output plugin influxdb##################################
    #[[outsputs.influxdb]]
@@ -132,19 +137,19 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    #   [processors.metric_match.field_filter]
    #   "path"=[""]
    ```
- - 4.start influxdb
+ - 5.start influxdb
    ```
    cd influxdb/usr/bin
    ./influxd
    ./influx
    create database DTS 
    ```
- - 5.start telegraf
+ - 6.start telegraf
    ```
    cd (the dir of telegraf)/cmd/telegraf
    go run ./
    ```
- - 6.use Grafana  
+ - 7.use Grafana  
    1.Login  
    2.Configuration  
    3.Add data source  
