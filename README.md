@@ -122,13 +122,15 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    #  [[inputs.huawei_telemetry_dialin.routers.Paths]]
    #     depth = 1
    #     path = ""
-
-   #[processors.metric_match.approach]
-   #appproach = "include" # or exclude
-   #[processors.metric_match.tag]
-   #"telemetry" = [""]
-   #[processors.metric_match.field_filter]
-   #"path"=[""]
+   
+   #[[processors.metric_match]]
+   #   order=1
+   #   [processors.metric_match.approach]
+   #   appproach = "include" # or exclude
+   #   [processors.metric_match.tag]
+   #    "" = [""]
+   #   [processors.metric_match.field_filter]
+   #   "path"=[""]
    ```
  - 4.start influxdb
    ```
