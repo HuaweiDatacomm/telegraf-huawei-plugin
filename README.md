@@ -53,7 +53,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    )
    
    ```
-5. Run `make` from the source directory,you can see telegraf-plugins are installed
+5. Run `make` from the source directory
    ```
    cd ../telegraf
    make
