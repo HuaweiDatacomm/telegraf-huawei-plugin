@@ -9,6 +9,7 @@ import (
 	internaltls "github.com/influxdata/telegraf/plugins/common/tls"
 	"github.com/influxdata/telegraf/plugins/inputs"
 	huawei_dialin "github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialin/huawei_dialin"
+	grpcpool "github.com/influxdata/telegraf/plugins/inputs/huawei_telemetry_dialin/huawei_dialin_grpcpool"
 	"github.com/influxdata/telegraf/plugins/parsers"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
@@ -126,12 +127,13 @@ func (dialin *HuaweiTelemetryDialin) singleSubscribe(dialinConfig router, parser
 		// no tls
 		opts = append(opts, grpc.WithInsecure())
 	}
-	conn, err := grpc.Dial(dialinConfig.Address, opts...)
+	//conn, err := grpc.Dial(dialinConfig.Address, opts...)
+	conn, err := grpcpool.GetConn(dialinConfig.Address)
 	if err != nil {
 		dialin.Log.Errorf("E! [single Subscribe] invalid Huawei Dialin remoteServer:ng TLS PEM %s,device address : %s, request_id:%s", dialin.Transport, dialinConfig.Address, dialinConfig.Request_id)
 		return
 	}
-	defer conn.Close()
+	//defer conn.Close()
 	client := huawei_dialin.NewGRPCConfigOperClient(conn)
 	var cancel context.CancelFunc
 	var ctx context.Context
