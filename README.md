@@ -138,7 +138,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    ```
  - 5.start influxdb
    ```
-   cd influxdb/usr/bin
+   cd influxdb-1.8.7-1/usr/bin
    ./influxd
    ./influx
    create database DTS 
@@ -148,7 +148,12 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    cd (the dir of telegraf)/cmd/telegraf
    go run ./
    ```
- - 7.use Grafana  
+ - 7.start grafana
+    ```
+   cd grafana-7.3.6/bin
+   ./grafana-server
+   ```
+ - 8.use Grafana  
    1.Login  
    2.Configuration  
    3.Add data source  
