@@ -30,13 +30,18 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    export TELEGRAFROOT = the dir of telegraf
    source /etc/profile
    ```
-3. Run install.sh (warning: run install.sh only once)
+3. add "source /etc/profile" in .bashrc file
+   ```
+   vim ~/.bashrc
+   source /etc/profile
+   ```
+4. Run install.sh (warning: run install.sh only once)
    ```
    cd telegraf-huawei-plugin
    chmod +x install.sh
    ./install.sh
    ```
-4. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
+5. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
@@ -53,7 +58,7 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    )
    
    ```
-5. Run `make` from the source directory
+6. Run `make` from the source directory
    ```
    cd ../telegraf
    make
