@@ -19,7 +19,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
 
 
-1. Clone the Telegraf and telegraf-huawei-plugin repository（）:
+1. Clone the Telegraf and telegraf-huawei-plugin repository:
    ```
    git clone https://github.com/influxdata/telegraf.git
    git clone https://github.com/HuaweiDatacomm/telegraf-huawei-plugin.git
