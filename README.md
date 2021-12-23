@@ -14,9 +14,10 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - protoc-gen-go :
   go get -u github.com/protobuf/protoc-gen-go@v1.2.0
 
+
 ### Build From Source
 
-Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
+Telegraf requires Go version 1.17.1 or newer, the Makefile requires GNU make.
 
 
 1. Clone the Telegraf and telegraf-huawei-plugin repository:
@@ -24,10 +25,12 @@ Telegraf requires Go version 1.17.2 or newer, the Makefile requires GNU make.
    git clone https://github.com/influxdata/telegraf.git
    git clone https://github.com/HuaweiDatacomm/telegraf-huawei-plugin.git
    ```
-2. Configuring the environment of telegraf ,here's an example 
+2. Configuring the environment of telegraf ,here's an example：enter the dir of telegraf ,then pwd,you can get the telegraf's dir.you should remember this dir,and export TELEGRAFROOT="this dir"
    ```
+   cd telegraf
+   pwd
    vim /etc/profile  
-   export TELEGRAFROOT = the dir of telegraf
+   export TELEGRAFROOT=
    source /etc/profile
    ```
 3. add "source /etc/profile" in .bashrc file
