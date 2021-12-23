@@ -14,8 +14,6 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - protoc-gen-go :
   go get -u github.com/protobuf/protoc-gen-go@v1.2.0
 
-### **GO Installation**
-
 
 ### Build From Source
 
