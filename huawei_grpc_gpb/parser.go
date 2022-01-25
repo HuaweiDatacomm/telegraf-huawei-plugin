@@ -260,7 +260,7 @@ func (p *Parser) mergeMaps(maps ...map[string]interface{}) (map[string]interface
     timestamp := time.Time{}
     for _, m := range maps {
         for k, v := range m {
-            if strings.HasSuffix(k, "time") || strings.HasSuffix(k, MsgTimeStampKeyName) {
+            if strings.HasSuffix(k, "_time") || strings.HasSuffix(k, MsgTimeStampKeyName) {
                 timeStruct, timeStr, errCal := calTimeByStamp(v)
                 if errCal != nil {
                     return nil, time.Time{}, fmt.Errorf("E! [grpc parser] when calculate time, key name is %s, time is %t, error is %v", k, v, errCal)
