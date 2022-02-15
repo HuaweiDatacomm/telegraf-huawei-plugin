@@ -44,7 +44,8 @@ Telegraf requires Go version 1.17.1 or newer, the Makefile requires GNU make.
    chmod +x install.sh
    ./install.sh
    ```
-5. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
+5. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto.  
+   proto file:https://github.com/HuaweiDatacomm/proto
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
