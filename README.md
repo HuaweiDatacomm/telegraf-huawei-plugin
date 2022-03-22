@@ -7,7 +7,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 ### **Prerequisites**
 
 - OS : Ubuntu, CentOS, Suse, Windows, Red Hat
-- Go : go1.17.2
+- Go : go1.17.1
 - Telegraf : Telegraf (1.20 recommended)
 - protoc :  3.11.4
   https://github.com/protocolbuffers/protobuf/releases
@@ -26,7 +26,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 ### **Prerequisites**
 
 - OS : Ubuntu, CentOS, Suse, Windows, Red Hat
-- Go : go1.17.2
+- Go : go1.17.1
 - Telegraf : Telegraf (1.20 recommended)
 - protoc :  3.11.4
   https://github.com/protocolbuffers/protobuf/releases
