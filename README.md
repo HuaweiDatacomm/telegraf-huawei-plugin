@@ -17,15 +17,53 @@ the huawei plugin for telegraf to collect and process information from huawei de
 
 ### Build From Source
 
-Telegraf requires Go version 1.17.1 or newer, the Makefile requires GNU make.
+# **telegraf-huawei-plugin**
+
+## **Overview**
+the huawei plugin for telegraf to collect and process information from huawei devices
+
+## **Installation**
+### **Prerequisites**
+
+- OS : Ubuntu, CentOS, Suse, Windows, Red Hat
+- Go : go1.17.2
+- Telegraf : Telegraf (1.20 recommended)
+- protoc :  3.11.4
+  https://github.com/protocolbuffers/protobuf/releases
+- protoc-gen-go :
+  go get -u github.com/protobuf/protoc-gen-go@v1.2.0
 
 
-1. Clone the Telegraf and telegraf-huawei-plugin repository:
+### Build From Source
+
+Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you know step 1 and step 2,you can ignore two steps)
+
+1. Install GO:(download GO and put it in dir usr, mkdir goWorkplace in dir usr)
+   ```
+   vim /etc/profile
+   export GOROOT=/usr/go
+   export GOPATH=/usr/goWorkplace
+   source /etc/profile
+   go version
+   ```
+2. Install protoc-gen-go:
+   ```
+   vim ~/.bashrc
+   export GO111MODULE=on
+   export GOPROXY=https://goproxy.io
+   export GONOSUMDB=*
+   export PATH=$PATH:$GOROOT/bin
+   source ~/.bashrc
+   go get -u github.com/golang/protobuf/proto
+   go get -u github.com/golang/protobuf/protoc-gen-go@v1.2.0
+   
+   ```
+3. Clone the Telegraf and telegraf-huawei-plugin repository:
    ```
    git clone https://github.com/influxdata/telegraf.git
    git clone https://github.com/HuaweiDatacomm/telegraf-huawei-plugin.git
    ```
-2. Configuring the environment of telegraf ,here's an example：enter the dir of telegraf ,then pwd,you can get the telegraf's dir.you should remember this dir,and export TELEGRAFROOT="this dir"
+4. Configuring the environment of telegraf ,here's an example：enter the dir of telegraf ,then pwd,you can get the telegraf's dir.you should remember this dir,and export TELEGRAFROOT="this dir"
    ```
    cd telegraf
    pwd
@@ -33,36 +71,31 @@ Telegraf requires Go version 1.17.1 or newer, the Makefile requires GNU make.
    export TELEGRAFROOT=
    source /etc/profile
    ```
-3. add "source /etc/profile" in .bashrc file
-   ```
-   vim ~/.bashrc
-   source /etc/profile
-   ```
-4. Run install.sh (warning: run install.sh only once)
+5. Run install.sh (warning: run install.sh only once)
    ```
    cd telegraf-huawei-plugin
    chmod +x install.sh
    ./install.sh
    ```
-5. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto.  
-   proto file:https://github.com/HuaweiDatacomm/proto
+6. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto . 
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
    cd huawei_debug
    protoc --go_out=plugins=grpc:. huawei-debug.proto
-   vim HuaweiTelemetry.go (
-   add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import
+   cd ..
+   vim HuaweiTelemetry.go 
+   
+   add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import(line 3) 
    add  PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
-   in the last function ("var pathTypeMap = map[PathKey][]reflect.Type{}"),
+   in the last function (line 93),
    like this :
    var pathTypeMap = map[PathKey][]reflect.Type{
       PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))}, 
    }
-   )
    
    ```
-6. Run `make` from the source directory
+7. Run `make` from the source directory
    ```
    cd ../telegraf
    make
