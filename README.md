@@ -80,13 +80,13 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    chmod +x install.sh
    ./install.sh
    ```
-6. Get the proto file, run `protoc --go_out=plugins=grpc:. ***.proto` to generate the file of proto. Because this protoc-gen-go's version is later, so you must add the `option go_package="/"` option to the .proto file(Modify the .proto file as follows: Find the "package" option, copy the content following "package", and add "option go_package="/" before the copied content.). here is an example of huawei_debug.proto.
+6. Get the proto file, run `protoc --go_out=plugins=grpc:. ***.proto` to generate the file of proto. Because this protoc-gen-go's version is later, so you must add the `option go_package="/"` option to the .proto file(Modify the .proto file as follows: Find the "package" option, copy the content following "package", and add "option go_package="/" before the copied content.). here is an example of huawei_debug.proto.  
 proto files: https://github.com/HuaweiDatacomm/proto  
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto(put huawei-debug.proto in this dir)
    vim huawei-debug.proto 
    add option go_package="/huawei_debug"
-   prtoc --go_out=plugins=grpc:. huawei-debug.proto
+   protoc --go_out=plugins=grpc:. huawei-debug.proto
    ```   
 7. Modify HuaweiTelemetry.go . Tips: we need to repeat this step 6 and 7 for each sensor path.  
    ```
