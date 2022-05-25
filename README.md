@@ -55,19 +55,18 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    protoc --version
    vim ~/.bashrc
    export GO111MODULE=on
-   export GOPROXY=https://goproxy.io
    export GONOSUMDB=*
-   export PATH=$PATH:$GOROOT/bin
+   export PATH=$PATH:$GOPATH/bin
    source ~/.bashrc
    go get -u github.com/golang/protobuf/proto
-   go get -u github.com/golang/protobuf/protoc-gen-go@v1.2.0
+   go get -u github.com/golang/protobuf/protoc-gen-go
    ```
 3. Clone the Telegraf and telegraf-huawei-plugin repository:
    ```
    git clone https://github.com/influxdata/telegraf.git
    git clone https://github.com/HuaweiDatacomm/telegraf-huawei-plugin.git
    ```
-4. Configuring the environment of telegraf ,here's an example：enter the dir of telegraf ,then pwd,you can get the telegraf's dir.you should remember this dir,and export TELEGRAFROOT="this dir"
+4. Configuring the environment of telegraf ,here's an example：enter the dir of telegraf ,then pwd,you can get the telegraf's dir.you should remember this dir,and export TELEGRAFROOT=this dir
    ```
    cd telegraf
    pwd
@@ -84,9 +83,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
 6. get the file of proto ,then use protoc-gen-go generate the file of proto , here is an example of huawei_debug.proto.tips: we need to repeat this step for each sensor path.  
    proto files: https://github.com/HuaweiDatacomm/proto
    ```
-   cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
-   mkdir huawei_debug (put huawei-debug.proto in this dir (Note:the dir's name has "_",not "-"))
-   cd huawei_debug
+   cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto(put huawei-debug.proto in this dir)
    protoc --go_out=plugins=grpc:. huawei-debug.proto
    cd ..
    vim HuaweiTelemetry.go 
