@@ -80,22 +80,21 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    chmod +x install.sh
    ./install.sh
    ```
-6. Get the proto file, run `protoc --go_out=plugins=grpc:. ***.proto` to generate the file of proto. Because this protoc-gen-go's version is later, so you must add the `option go_package="/"` option to the .proto file. here is an example of huawei_debug.proto.  proto files: https://github.com/HuaweiDatacomm/proto  
+6. Get the proto file, run `protoc --go_out=plugins=grpc:. ***.proto` to generate the file of proto. Because this protoc-gen-go's version is later, so you must add the `option go_package="/"` option to the .proto file(Modify the .proto file as follows: Find the "package" option, copy the content following "package", and add "option go_package="/" before the copied content.). here is an example of huawei_debug.proto.
+proto files: https://github.com/HuaweiDatacomm/proto  
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto(put huawei-debug.proto in this dir)
-   vim huawei-debug.proto ()
-   
-   
+   vim huawei-debug.proto 
+   add option go_package="/huawei_debug"
+   prtoc --go_out=plugins=grpc:. huawei-debug.proto
    ```   
-7. get the file of proto ,then use protoc-gen-go generate the file of proto . tips: we need to repeat this step for each sensor path.  
-   proto files: https://github.com/HuaweiDatacomm/proto
+7. Modify HuaweiTelemetry.go . Tips: we need to repeat this step 6 and 7 for each sensor path.  
    ```
-   cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto(put huawei-debug.proto in this dir)
-   protoc --go_out=plugins=grpc:. huawei-debug.proto
-   cd ..
+   cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    vim HuaweiTelemetry.go 
-   
+ 
    add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import(line 3) 
+   
    add  PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
    in the last function (line 93),
    like this :
