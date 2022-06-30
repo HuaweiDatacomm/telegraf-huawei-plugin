@@ -17,25 +17,6 @@ the huawei plugin for telegraf to collect and process information from huawei de
 
 ### Build From Source
 
-# **telegraf-huawei-plugin**
-
-## **Overview**
-the huawei plugin for telegraf to collect and process information from huawei devices
-
-## **Installation**
-### **Prerequisites**
-
-- OS : Ubuntu, CentOS, Suse, Windows, Red Hat
-- Go : go1.17.1
-- Telegraf : Telegraf (1.20 recommended)
-- protoc :  3.11.4
-  https://github.com/protocolbuffers/protobuf/releases
-- protoc-gen-go :
-  go get -u github.com/protobuf/protoc-gen-go@v1.2.0
-
-
-### Build From Source
-
 Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you know step 1 and step 2,you can ignore two steps)
 
 1. Install GO:(download GO and put it in dir usr, mkdir goWorkplace in dir usr)
