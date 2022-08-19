@@ -8,8 +8,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 
 - OS : Ubuntu, CentOS, Suse, Windows, Red Hat
 - Go : go1.17.1
-- Telegraf : Telegraf (1.20 recommended)  
-  https://github.com/influxdata/telegraf/tree/release-1.20
+- Telegraf : Telegraf (1.20 recommended) https://github.com/influxdata/telegraf/tree/release-1.20
 - protoc :  3.11.4
   https://github.com/protocolbuffers/protobuf/releases
 - protoc-gen-go :
