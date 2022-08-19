@@ -74,7 +74,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
    ```
    protoc --go_out=plugins=grpc:. huawei-debug.proto
    ```   
-9. Modify HuaweiTelemetry.go . Tips: we need to repeat this step 6,7,8 for each sensor path.  
+9. Modify HuaweiTelemetry.go . Tips: we need to repeat this step 6,7,8,9 for each sensor path.  
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    vim HuaweiTelemetry.go 
