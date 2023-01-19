@@ -175,16 +175,10 @@ func (kv *KVStruct) FullFlattenStruct(fieldname string,
     case int32:
         kv.Fields[fieldname] = v.(int32)
     case string:
-        isNum, num := convertToNum(v.(string))
-        if isNum {
-            kv.Fields[fieldname] = num
-        } else {
+        if convertString {
             kv.Fields[fieldname] = v.(string)
-            if convertString {
-                kv.Fields[fieldname] = v.(string)
-            } else {
-                return nil
-            }
+        } else {
+            return nil
         }
     case bool:
         if convertBool {
