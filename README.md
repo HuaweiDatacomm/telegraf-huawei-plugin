@@ -67,7 +67,6 @@ proto files: https://github.com/HuaweiDatacomm/proto
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    vim huawei-debug.proto
-   add option go_package="/huawei_debug";
    ```   
 8. run protoc --go_out=plugins=grpc:. ***.proto to generate the file of proto. 
    ```
@@ -113,7 +112,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
    cd telegraf-huawei-plugin
    go run encrypted.go
    ```
- - 4.configuration telegraf.conf (/ect/telegraf/telegraf.conf)
+ - 4.configuration telegraf.conf (/etc/telegraf/telegraf.conf)
    ```
    # ##################################output plugin influxdb##################################
    #[[outsputs.influxdb]]
