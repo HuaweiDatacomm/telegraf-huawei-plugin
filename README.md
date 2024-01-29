@@ -12,7 +12,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - protoc :  3.11.4
   https://github.com/protocolbuffers/protobuf/releases
 - protoc-gen-go :
-  go get -u github.com/protobuf/protoc-gen-go
+  go get google.golang.org/protobuf/protoc-gen-go
 
 
 ### Build From Source
@@ -41,7 +41,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    export PATH=$PATH:$GOPATH/bin
    source ~/.bashrc
    go get -u github.com/golang/protobuf/proto
-   go get -u github.com/golang/protobuf/protoc-gen-go
+   go get google.golang.org/protobuf/protoc-gen-go
    ```
 3. Clone the Telegraf and telegraf-huawei-plugin repository:
    ```
