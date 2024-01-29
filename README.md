@@ -45,7 +45,6 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    ```
 3. Clone the Telegraf and telegraf-huawei-plugin repository:
    ```
-   git clone https://github.com/influxdata/telegraf.git
    git clone https://github.com/HuaweiDatacomm/telegraf-huawei-plugin.git
    ```
 4. Configuring the environment of telegraf ,here's an example：enter the dir of telegraf ,then pwd,you can get the telegraf's dir.you should remember this dir,and export TELEGRAFROOT=this dir
