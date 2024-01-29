@@ -112,7 +112,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
    cd telegraf-huawei-plugin
    go run encrypted.go
    ```
- - 4.configuration telegraf.conf (/etc/telegraf/telegraf.conf)
+ - 4.configuration telegraf.conf (/etc/telegraf/telegraf.conf),you can copy the telegraf.conf file in the etc directory of telegraf 1.20 and then update configuration. 
    ```
    # ##################################output plugin influxdb##################################
    #[[outsputs.influxdb]]
