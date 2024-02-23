@@ -21,7 +21,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
 
 1. Install GO:(download GO and put it in dir usr, mkdir goWorkplace in dir usr)
    ```
-   vim /etc/profile
+   vi /etc/profile
    export GOROOT=/usr/go
    export GOPATH=/usr/goWorkplace
    export PATH=$PATH:$GOROOT/bin
@@ -34,7 +34,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    cd protoc-3.11.4-linux-x86_64/bin
    mv protoc $GOPATH/go
    protoc --version
-   vim ~/.bashrc
+   vi ~/.bashrc
    export GO111MODULE=on
    export GOPROXY=https://goproxy.io
    export GONOSUMDB=*
@@ -51,7 +51,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    ```
    cd telegraf
    pwd
-   vim /etc/profile  
+   vi /etc/profile  
    export TELEGRAFROOT=
    source /etc/profile
    ```
@@ -75,7 +75,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
 9. Modify HuaweiTelemetry.go . Tips: we need to repeat this step 6,7,8,9 for each sensor path.  
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
-   vim HuaweiTelemetry.go 
+   vi HuaweiTelemetry.go 
  
    add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import(line 3) 
    
@@ -104,8 +104,8 @@ proto files: https://github.com/HuaweiDatacomm/proto
    ```
    cd /etc
    mkdir telegraf
-   cp (the dir of telegraf)/etc/telegraf.conf /etc/telegraf
-   vim /etc/telegraf/telegraf.conf
+   cp telegraf-huawei-plugin/telegraf.conf /etc/telegraf
+   vi /etc/telegraf/telegraf.conf
    ```
  - 3.get the encrypted password
    ```
