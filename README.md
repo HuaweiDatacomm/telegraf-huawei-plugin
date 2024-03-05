@@ -72,20 +72,11 @@ proto files: https://github.com/HuaweiDatacomm/proto
    ```
    protoc --go_out=plugins=grpc:. huawei-debug.proto
    ```   
-9. Modify HuaweiTelemetry.go . Tips: we need to repeat this step 6,7,8,9 for each sensor path.  
+9. Modify HuaweiTelemetry.go .add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import(line 3)  and PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
+   in the last function (line 93), Tips: we need to repeat this step 6,7,8,9 for each sensor path.  
    ```
    cd /telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto
    vi HuaweiTelemetry.go 
- 
-   add "github.com/influxdata/telegraf/plugins/parsers/huawei_grpc_gpb/telemetry_proto/huawei_debug" in import(line 3) 
-   
-   add  PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))},
-   in the last function (line 93),
-   like this :
-   var pathTypeMap = map[PathKey][]reflect.Type{
-      PathKey{ProtoPath: "huawei_debug.Debug", Version: "1.0"}: []reflect.Type{reflect.TypeOf((*huawei_debug.Debug)(nil))}, 
-   }
-   
    ```
 8. Run `make` from the source directory
    ```
