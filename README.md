@@ -41,7 +41,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    export PATH=$PATH:$GOPATH/bin
    source ~/.bashrc
    go get -u github.com/golang/protobuf/proto
-   go get google.golang.org/protobuf/protoc-gen-go
+   go get -u github.com/golang/protobuf/protoc-gen-go
    ```
 3. Clone the Telegraf and telegraf-huawei-plugin repository:
    ```
@@ -98,12 +98,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
    cp telegraf-huawei-plugin/telegraf.conf /etc/telegraf
    vi /etc/telegraf/telegraf.conf
    ```
- - 3.get the encrypted password
-   ```
-   cd telegraf-huawei-plugin
-   go run encrypted.go
-   ```
- - 4.configuration telegraf.conf (/etc/telegraf/telegraf.conf),you can copy the telegraf.conf file in the etc directory of telegraf 1.20 and then update configuration. 
+ - 3.configuration telegraf.conf (/etc/telegraf/telegraf.conf),you can copy the telegraf.conf file in the etc directory of telegraf 1.20 and then update configuration. 
    ```
    # ##################################output plugin influxdb##################################
    #[[outsputs.influxdb]]
@@ -161,24 +156,23 @@ proto files: https://github.com/HuaweiDatacomm/proto
    #   [processors.metric_match.field_filter]
    #   "huawei-debug:debug/memory-infos/cpu-info"=[""]
    ```
- - 5.start influxdb
+ - 4.start influxdb
    ```
    cd influxdb-1.8.7-1/usr/bin
    ./influxd
    ./influx
    create database DTS 
    ```
- - 6.start telegraf
+ - 5.start telegraf
    ```
-   cd (the dir of telegraf)/cmd/telegraf
-   go run ./
+   nohup telegraf > telegraf.log 2>&1 &
    ```
- - 7.start grafana
+ - 6.start grafana
     ```
    cd grafana-7.3.6/bin
    ./grafana-server
    ```
- - 8.use Grafana  
+ - 7.use Grafana  
    1.Login  
    2.Configuration  
    3.Add data source  
