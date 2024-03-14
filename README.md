@@ -127,7 +127,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
    # ##request_ip  #subscription parameters, vaule is 1~2^64-1
    # ##suppress_redundant #option of suppress_redundant: true or false
    # ##username # aaa's username
-   # ##password # aaa's password(encrypted)
+   # ##password # aaa's password
    # ##path #collection path
    # ##metric_match.approach #filtering metrics methods ,"include" or "exclude"
    # ##metric_match.field_filter #filtering metrics matching 
