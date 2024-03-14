@@ -141,8 +141,8 @@ func (dialin *HuaweiTelemetryDialin) singleSubscribe(dialinConfig router, parser
 	if dialinConfig.Aaa.Username != "" && dialinConfig.Aaa.Password != "" {
 		// input aaa as context
 		dec_password, _ := base64.URLEncoding.DecodeString(dialinConfig.Aaa.Password)
-		ctx = metadata.AppendToOutgoingContext(context.TODO(), "username", dialinConfig.Aaa.Username, "password", string(dec_password))
-		//ctx = metadata.AppendToOutgoingContext(context.TODO(), "username", dialinConfig.Aaa.Username, "password", dialinConfig.Aaa.Password)
+		//ctx = metadata.AppendToOutgoingContext(context.TODO(), "username", dialinConfig.Aaa.Username, "password", string(dec_password))
+		ctx = metadata.AppendToOutgoingContext(context.TODO(), "username", dialinConfig.Aaa.Username, "password", dialinConfig.Aaa.Password)
 	} else {
 		dialin.Log.Errorf("E! [single Subscribe] no aaa configuration checked , device address : %s, request_id:%s", dialinConfig.Address, dialinConfig.Request_id)
 	}
