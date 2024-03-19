@@ -10,7 +10,7 @@ the huawei plugin for telegraf to collect and process information from huawei de
 - Go : go1.17.1
 - Telegraf : Telegraf (1.20 recommended) https://github.com/influxdata/telegraf/tree/release-1.20
 - protoc :  3.11.4
-  https://github.com/protocolbuffers/protobuf/releases
+  https://github.com/protocolbuffers/protobuf/releases/download/v3.11.4/protoc-3.11.4-linux-x86_64.zip
 - protoc-gen-go :
   go get google.golang.org/protobuf/protoc-gen-go
 
