@@ -2,7 +2,6 @@ package huawei_telemetry_dialin
 
 import (
 	"context"
-	"encoding/base64"
 	"encoding/hex"
 	"fmt"
 	"github.com/influxdata/telegraf"
@@ -140,7 +139,7 @@ func (dialin *HuaweiTelemetryDialin) singleSubscribe(dialinConfig router, parser
 	ctx, cancel = context.WithCancel(context.Background())
 	if dialinConfig.Aaa.Username != "" && dialinConfig.Aaa.Password != "" {
 		// input aaa as context
-		dec_password, _ := base64.URLEncoding.DecodeString(dialinConfig.Aaa.Password)
+		//dec_password, _ := base64.URLEncoding.DecodeString(dialinConfig.Aaa.Password)
 		//ctx = metadata.AppendToOutgoingContext(context.TODO(), "username", dialinConfig.Aaa.Username, "password", string(dec_password))
 		ctx = metadata.AppendToOutgoingContext(context.TODO(), "username", dialinConfig.Aaa.Username, "password", dialinConfig.Aaa.Password)
 	} else {
