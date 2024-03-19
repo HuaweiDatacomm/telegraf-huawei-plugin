@@ -165,7 +165,8 @@ proto files: https://github.com/HuaweiDatacomm/proto
    ```
  - 5.start telegraf
    ```
-   nohup telegraf > telegraf.log 2>&1 &
+   cd ../cmd/telegraf
+   go run ./
    ```
  - 6.start grafana
     ```
