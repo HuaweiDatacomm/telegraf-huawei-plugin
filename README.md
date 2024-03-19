@@ -32,7 +32,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    ```
    unzip protoc-3.11.4-linux-x86_64.zip
    cd protoc-3.11.4-linux-x86_64/bin
-   mv protoc $GOPATH/go
+   cp protoc /usr/bin
    protoc --version
    vi ~/.bashrc
    export GO111MODULE=on
