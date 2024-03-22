@@ -40,8 +40,7 @@ Telegraf requires Go version 1.17.1 , the Makefile requires GNU make.(if you kno
    export GONOSUMDB=*
    export PATH=$PATH:$GOPATH/bin
    source ~/.bashrc
-   go get -u github.com/golang/protobuf/proto
-   go get -u github.com/golang/protobuf/protoc-gen-go
+   go install github.com/golang/protobuf/protoc-gen-go@v1.5.0
    ```
 3. Clone the Telegraf and telegraf-huawei-plugin repository:
    ```
