@@ -89,7 +89,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
  - Influxdb:https://dl.influxdata.com/influxdb/releases/influxdb-1.8.7_linux_amd64.tar.gz
  - Grafana:https://dl.grafana.com/oss/release/grafana-7.3.6.linux-amd64.tar.gz
  - 1.config huawei devices  
-   https://support.huawei.com/enterprise/en/doc/EDOC1100055030/b650f7a7  
+    https://support.huawei.com/hedex/hdx.do?docid=EDOC1100366361&id=EN-US_TOPIC_0000001512675046
  - 2.copy telegraf.conf to /etc/telegraf
    ```
    cd /etc
