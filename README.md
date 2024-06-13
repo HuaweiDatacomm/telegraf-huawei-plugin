@@ -97,7 +97,7 @@ proto files: https://github.com/HuaweiDatacomm/proto
    cp telegraf-huawei-plugin/telegraf.conf /etc/telegraf
    vi /etc/telegraf/telegraf.conf
    ```
- - 3.configuration telegraf.conf (/etc/telegraf/telegraf.conf),you can copy the telegraf.conf file in the etc directory of telegraf 1.20 and then update configuration. 
+ - 3.update configuration telegraf.conf. (/etc/telegraf/telegraf.conf)
    ```
    # ##################################output plugin influxdb##################################
    #[[outsputs.influxdb]]
